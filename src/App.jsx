@@ -4,7 +4,6 @@ import TodoList from "./components/TodoList";
 import TodoFilter from "./components/TodoFilter";
 
 function App() {
-  // Carrega as tarefas salvas no localStorage (se existirem)
   const [todos, setTodos] = useState(() => {
     const salvos = localStorage.getItem("todos");
     return salvos ? JSON.parse(salvos) : [];
@@ -12,12 +11,10 @@ function App() {
 
   const [filtro, setFiltro] = useState("todas");
 
-  // Sempre que a lista de tarefas mudar, salva no localStorage
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  // Adiciona uma nova tarefa
   function adicionarTodo(texto) {
     setTodos([
       ...todos,
@@ -29,7 +26,6 @@ function App() {
     ]);
   }
 
-  // Marca ou desmarca uma tarefa como concluída
   function toggleTodo(id) {
     setTodos(
       todos.map((todo) =>
@@ -38,16 +34,14 @@ function App() {
     );
   }
 
-  // Remove uma tarefa da lista
   function removerTodo(id) {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
 
-  // Filtra as tarefas de acordo com o filtro selecionado
   const todosFiltrados = todos.filter((todo) => {
     if (filtro === "pendentes") return !todo.concluida;
     if (filtro === "concluidas") return todo.concluida;
-    return true; // "todas"
+    return true;
   });
 
   return (
@@ -55,7 +49,6 @@ function App() {
       <h1>Lista de Tarefas</h1>
 
       <TodoForm onAdicionar={adicionarTodo} />
-
       <TodoFilter filtro={filtro} setFiltro={setFiltro} />
 
       <TodoList

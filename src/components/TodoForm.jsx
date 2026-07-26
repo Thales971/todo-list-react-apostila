@@ -5,13 +5,10 @@ function TodoForm({ onAdicionar }) {
   const [texto, setTexto] = useState("");
 
   function handleSubmit(e) {
-    e.preventDefault(); // evita o reload da página
-
-    // Não adiciona tarefa vazia
+    e.preventDefault();
     if (texto.trim() === "") return;
-
     onAdicionar(texto.trim());
-    setTexto(""); // limpa o campo depois de adicionar
+    setTexto("");
   }
 
   return (

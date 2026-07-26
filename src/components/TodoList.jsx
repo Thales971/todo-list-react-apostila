@@ -2,11 +2,8 @@ import TodoItem from "./TodoItem";
 import styles from "./TodoList.module.css";
 
 function TodoList({ todos, onToggle, onRemover }) {
-  // Se não tiver nenhuma tarefa no filtro atual
   if (todos.length === 0) {
-    return (
-      <p className={styles.vazia}>Nenhuma tarefa encontrada.</p>
-    );
+    return <p className={styles.vazia}>Nenhuma tarefa encontrada.</p>;
   }
 
   return (
