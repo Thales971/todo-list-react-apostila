@@ -1,0 +1,11 @@
+.lista {
+  list-style: none;
+  margin-top: 8px;
+}
+
+.vazia {
+  text-align: center;
+  color: #a0aec0;
+  padding: 24px;
+  font-style: italic;
+}
